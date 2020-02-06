@@ -1,0 +1,30 @@
+<div *ngIf='messageLoading' class="message-overlay">
+	<h3> {{selectedUser !== null && selectedUser.username ? 'Carregando Mensagens' : ' Selecione um usuário para conversar.' }}</h3>
+</div>
+<div class="massege-wrapper" *ngIf='!messageLoading'>
+	<div class="massege-container">
+		<div class="opposite-user" *ngIf="selectedUser != null && selectedUser.username">
+			Conversando com o {{selectedUser.username}}
+		</div>
+
+		<ul #messageThread class="message-thread" *ngIf="messages.length !== 0">
+			<li *ngFor="let message of messages" [class.align-right]="alignMessage(message.toUserId)">
+				{{ message.message}}
+			</li>
+		</ul>
+
+		<div  class="message-thread start-chatting-banner" *ngIf="messages.length === 0">
+			<p class="heading">
+				Você ainda não conversou com o {{selectedUser.username}},
+				<span class="sub-heading">Diga Oi.</span>
+			</p>			
+		</div>
+	</div>
+
+	<div class="message-typer">
+		<form [formGroup]="messageForm" novalidate>
+			<textarea class="message form-control" placeholder="Digite e aperte Enter" (keyup)="sendMessage($event)" formControlName="message">
+			</textarea>
+		</form>
+	</div>
+</div>

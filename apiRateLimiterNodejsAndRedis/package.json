@@ -1,0 +1,18 @@
+{
+  "name": "api-rate-limiter-using-nodejs-and-redis",
+  "version": "1.0.0",
+  "description": "This is a demonstration of API Rate limiting in Nodejs using Express and Redis",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcos Ramalho",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "redis": "^2.8.0"
+  }
+}
